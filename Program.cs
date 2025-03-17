@@ -59,11 +59,49 @@ namespace bt_linq
             new NhanVien_336(6, "Phúc", 27, 7200, 3)
 
         };
+            Console.WriteLine("Phạm Thiện Tâm 22115053122336");
+            //JOIN nhân viên với phòng ban
+            var nhanVienPhongBan_336 = from nv_336 in nhanViens_336
+                                       join pb_336 in phongBans_336 on nv_336.PhongBanId_336 equals pb_336.Id_336
+                                       select new { nv_336.Ten_336, nv_336.Tuoi_336, nv_336.Luong_336, TenPhong_336 = pb_336.Ten_336 };
 
-        
-          
+            Console.WriteLine("\nDanh sách nhân viên và phòng ban:");
+            foreach (var item_336 in nhanVienPhongBan_336)
+            {
+                Console.WriteLine($"Nhân viên: {item_336.Ten_336}, Tuổi: {item_336.Tuoi_336}, Lương: {item_336.Luong_336:C}, Phòng ban: {item_336.TenPhong_336}");
+            }
+
+            // Nhóm nhân viên theo phòng ban, sắp xếp theo tuổi
+            var nhomNhanVien_336 = from nv_336 in nhanViens_336
+                                   group nv_336 by nv_336.PhongBanId_336 into nhom_336
+                                   join pb_336 in phongBans_336 on nhom_336.Key equals pb_336.Id_336
+                                   select new
+                                   {
+                                       TenPhong_336 = pb_336.Ten_336,
+                                       TreNhat_336 = nhom_336.OrderBy(e => e.Tuoi_336).First(),
+                                       GiaNhat_336 = nhom_336.OrderByDescending(e => e.Tuoi_336).First(),
+                                       TuoiTB_336 = nhom_336.Average(e => e.Tuoi_336)
+                                   };
+
+            Console.WriteLine("\n Danh sách nhân viên theo phòng ban (Trẻ nhất, Già nhất, Trung bình tuổi):");
+            foreach (var group_336 in nhomNhanVien_336)
+            {
+                Console.WriteLine($"Phòng: {group_336.TenPhong_336}");
+                Console.WriteLine($"- Trẻ nhất: {group_336.TreNhat_336.Ten_336}, Tuổi: {group_336.TreNhat_336.Tuoi_336}");
+                Console.WriteLine($"- Già nhất: {group_336.GiaNhat_336.Ten_336}, Tuổi: {group_336.GiaNhat_336.Tuoi_336}");
+                Console.WriteLine($"- Tuổi trung bình: {group_336.TuoiTB_336:F2}");
+            }
+
+            // Tính lương trung bình của công ty
+            decimal luongTB_336 = nhanViens_336.Average(e => e.Luong_336);
+            Console.WriteLine($"\nLương trung bình của công ty: {luongTB_336:C}");
+
             Console.ReadLine();
         }
+
+
+  
+        
        
     }
     }
