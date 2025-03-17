@@ -1,0 +1,7 @@
+C:\Users\TAM\source\repos\bt_linq\bin\Debug\bt_linq.exe.config
+C:\Users\TAM\source\repos\bt_linq\bin\Debug\bt_linq.exe
+C:\Users\TAM\source\repos\bt_linq\bin\Debug\bt_linq.pdb
+C:\Users\TAM\source\repos\bt_linq\obj\Debug\bt_linq.csproj.AssemblyReference.cache
+C:\Users\TAM\source\repos\bt_linq\obj\Debug\bt_linq.csproj.CoreCompileInputs.cache
+C:\Users\TAM\source\repos\bt_linq\obj\Debug\bt_linq.exe
+C:\Users\TAM\source\repos\bt_linq\obj\Debug\bt_linq.pdb
